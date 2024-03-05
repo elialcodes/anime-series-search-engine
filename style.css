@@ -24,7 +24,8 @@ h2 {
   width: 50%;
 }
 
-.button-search {
+.button-search,
+.button-reset {
   padding: 7px;
   background-color: aqua;
   color: black;

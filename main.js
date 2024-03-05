@@ -2,6 +2,7 @@
 
 const inputSearch = document.querySelector('.js-input-search');
 const buttonSearch = document.querySelector('.js-button-search');
+const buttonReset = document.querySelector('.js-button-reset');
 const containerFavorite = document.querySelector('.js-container-favorite');
 const containerMain = document.querySelector('.js-container-main');
 const noResultParagraph = document.querySelector('.js-no-result');
@@ -66,3 +67,12 @@ function handleAddFavorite(event) {
   renderSerie(favoriteList, containerFavorite);
   localStorage.setItem('favorite series', JSON.stringify(favoriteList));
 }
+
+function handleReset() {
+  inputSearch.value = '';
+  containerFavorite.innerHTML = '';
+  containerMain.innerHTML = '';
+  noResultParagraph.innerHTML = '';
+}
+
+buttonReset.addEventListener('click', handleReset);
