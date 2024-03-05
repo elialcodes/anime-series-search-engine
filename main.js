@@ -31,21 +31,24 @@ function renderSerie(series, container) {
     card.addEventListener('click', handleAddFavorite);
   }
 }
+
 function renderFavorite(series, container) {
   let content = '';
+  let index = 0;
   for (const serie of series) {
     let imageUrl = serie.images.jpg.image_url;
     if (imageUrl === 'https://cdn.myanimelist.net/img/sp/icon/apple-touch-icon-256.png') {
       imageUrl = 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
     }
-    content += `<div id="${serie.mal_id}" class="card-container-favorite js-favorite-card"><img class="img-favorite-card" src="${imageUrl}" alt="anime serie"/><div class="title-and-remove"><span class="title-favorite-card">${serie.title}</span><button class="remove-button js-remove-button">Eliminar</button></div></div>`;
+    content += `<div id="${serie.mal_id}" class="card-container-favorite js-favorite-card"><img class="img-favorite-card" src="${imageUrl}" alt="anime serie"/><div class="title-and-remove"><span class="title-favorite-card">${serie.title}</span><button id="${index}" class="remove-button js-remove-button">Eliminar</button></div></div>`;
+    index++;
   }
   container.innerHTML = content;
 
-  // const cards = document.querySelectorAll('.js-favorite-card');
-  // for (const card of cards) {
-  //   card.addEventListener('click', handleAddFavorite);
-  // }
+  const removeButtons = document.querySelectorAll('.js-remove-button');
+  for (const removeButton of removeButtons) {
+    removeButton.addEventListener('click', handleRemoveFavorite);
+  }
 }
 
 function handleGetApi() {
@@ -57,7 +60,6 @@ function handleGetApi() {
     fetch(`https://api.jikan.moe/v4/anime?q=${inputSearchValue}`)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data.data);
         seriesList = data.data;
         renderSerie(seriesList, containerMain);
       })
@@ -82,6 +84,15 @@ function handleAddFavorite(event) {
   event.currentTarget.classList.add('favorite-card');
   renderFavorite(favoriteList, containerFavorite);
   localStorage.setItem('favorite series', JSON.stringify(favoriteList));
+}
+
+function handleRemoveFavorite(event) {
+  const index = event.target.id;
+  favoriteList.splice(index, 1);
+  let cardsLocalStorage = JSON.parse(localStorage.getItem('favorite series'));
+  cardsLocalStorage.splice(index, 1);
+  localStorage.setItem('favorite series', JSON.stringify(cardsLocalStorage));
+  renderFavorite(favoriteList, containerFavorite);
 }
 
 function handleReset() {
