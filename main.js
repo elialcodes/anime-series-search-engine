@@ -12,7 +12,7 @@ let favoriteList = [];
 
 if (cardsSaved !== null) {
   favoriteList = cardsSaved;
-  renderSerie(favoriteList, containerFavorite);
+  renderFavorite(favoriteList, containerFavorite);
 }
 
 function renderSerie(series, container) {
@@ -22,7 +22,7 @@ function renderSerie(series, container) {
     if (imageUrl === 'https://cdn.myanimelist.net/img/sp/icon/apple-touch-icon-256.png') {
       imageUrl = 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
     }
-    content += `<div id="${serie.mal_id}" class="card js-card"><span class="title-card">${serie.title}</span><img class="img-card" src="${imageUrl}" alt="" /></div>`;
+    content += `<div id="${serie.mal_id}" class="card-container-main js-card"><span class="title-card">${serie.title}</span><img class="img-card" src="${imageUrl}" alt="anime serie" /></div>`;
   }
   container.innerHTML = content;
 
@@ -30,6 +30,22 @@ function renderSerie(series, container) {
   for (const card of cards) {
     card.addEventListener('click', handleAddFavorite);
   }
+}
+function renderFavorite(series, container) {
+  let content = '';
+  for (const serie of series) {
+    let imageUrl = serie.images.jpg.image_url;
+    if (imageUrl === 'https://cdn.myanimelist.net/img/sp/icon/apple-touch-icon-256.png') {
+      imageUrl = 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
+    }
+    content += `<div id="${serie.mal_id}" class="card-container-favorite js-favorite-card"><img class="img-favorite-card" src="${imageUrl}" alt="anime serie"/><div class="title-and-remove"><span class="title-favorite-card">${serie.title}</span><button class="remove-button js-remove-button">Eliminar</button></div></div>`;
+  }
+  container.innerHTML = content;
+
+  // const cards = document.querySelectorAll('.js-favorite-card');
+  // for (const card of cards) {
+  //   card.addEventListener('click', handleAddFavorite);
+  // }
 }
 
 function handleGetApi() {
@@ -64,12 +80,14 @@ function handleAddFavorite(event) {
     favoriteList.push(selectedCard);
   }
   event.currentTarget.classList.add('favorite-card');
-  renderSerie(favoriteList, containerFavorite);
+  renderFavorite(favoriteList, containerFavorite);
   localStorage.setItem('favorite series', JSON.stringify(favoriteList));
 }
 
 function handleReset() {
   inputSearch.value = '';
+  seriesList = [];
+  favoriteList = [];
   containerFavorite.innerHTML = '';
   containerMain.innerHTML = '';
   noResultParagraph.innerHTML = '';
