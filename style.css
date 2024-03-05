@@ -32,6 +32,12 @@ h2 {
   border-radius: 2px;
 }
 
+.no-result {
+  margin-left: 20px;
+  color: red;
+  font-size: 14px;
+}
+
 .container {
   width: 100%;
   padding: 20px;
@@ -77,5 +83,7 @@ h2 {
 }
 
 .favorite-card {
-  border: 3px solid aqua;
+  border: 10px solid aqua;
+  color: aqua;
+  font-weight: 800;
 }
