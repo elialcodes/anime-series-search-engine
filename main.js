@@ -17,10 +17,11 @@ if (cardsSaved !== null) {
 function renderSerie(series, container) {
   let content = '';
   for (const serie of series) {
-    // if (serie.image.jpg.image_url === 'null') {
-    //   serie.image.jpg.image_url = 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
-    // }
-    content += `<div id="${serie.mal_id}" class="card js-card"><span class="title-card">${serie.title}</span><img class="img-card" src="${serie.images.jpg.image_url}" alt="" /></div>`;
+    let imageUrl = serie.images.jpg.image_url;
+    if (imageUrl === 'https://cdn.myanimelist.net/img/sp/icon/apple-touch-icon-256.png') {
+      imageUrl = 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
+    }
+    content += `<div id="${serie.mal_id}" class="card js-card"><span class="title-card">${serie.title}</span><img class="img-card" src="${imageUrl}" alt="" /></div>`;
   }
   container.innerHTML = content;
 
