@@ -5,8 +5,14 @@ const buttonSearch = document.querySelector('.js-button-search');
 const containerFavorite = document.querySelector('.js-container-favorite');
 const containerMain = document.querySelector('.js-container-main');
 const noResultParagraph = document.querySelector('.js-no-result');
+const cardsSaved = JSON.parse(localStorage.getItem('favorite series'));
 let seriesList = [];
 let favoriteList = [];
+
+if (cardsSaved !== null) {
+  favoriteList = cardsSaved;
+  renderSerie(favoriteList, containerFavorite);
+}
 
 function renderSerie(series, container) {
   let content = '';
@@ -22,7 +28,6 @@ function renderSerie(series, container) {
   for (const card of cards) {
     card.addEventListener('click', handleAddFavorite);
   }
-  console.log(cards);
 }
 
 function handleGetApi() {
@@ -36,9 +41,9 @@ function handleGetApi() {
       .then((data) => {
         console.log(data.data);
         seriesList = data.data;
-
         renderSerie(seriesList, containerMain);
       })
+
       .catch((error) => {
         console.error('Error fetching data:', error);
       });
@@ -48,7 +53,6 @@ function handleGetApi() {
 buttonSearch.addEventListener('click', handleGetApi);
 
 function handleAddFavorite(event) {
-  console.log(event.currentTarget);
   const selectedCardId = parseInt(event.currentTarget.id);
   const selectedCard = seriesList.find((serie) => serie.mal_id === selectedCardId);
   const indexFavoriteCards = favoriteList.findIndex((favoriteItem) => {
@@ -58,11 +62,6 @@ function handleAddFavorite(event) {
     favoriteList.push(selectedCard);
   }
   event.currentTarget.classList.add('favorite-card');
-  localStorage.setItem('favorite series', JSON.stringify(favoriteList));
   renderSerie(favoriteList, containerFavorite);
-}
-const cardsSaved = JSON.parse(localStorage.getItem('favorite series'));
-
-if (cardsSaved !== null) {
-  renderSerie(cardsSaved, containerFavorite);
+  localStorage.setItem('favorite series', JSON.stringify(favoriteList));
 }
