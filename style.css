@@ -2,4 +2,80 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+  background-color: black;
+}
+
+h2 {
+  padding: 20px;
+  color: aqua;
+}
+
+.input-search {
+  margin: 20px;
+  padding: 5px;
+  background-color: black;
+  color: white;
+  border: 2px solid aqua;
+  border-radius: 5px;
+  width: 50%;
+}
+
+.button-search {
+  padding: 7px;
+  background-color: aqua;
+  color: black;
+  border: none;
+  border-radius: 2px;
+}
+
+.container {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  gap: 20px;
+}
+
+.container-favorite {
+  width: 35%;
+  color: black;
+  border: 2px solid lightpink;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.container-main {
+  width: 65%;
+  color: black;
+  border: 2px solid white;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.title-container-favorite {
+  padding: 10px;
+  background-color: lightpink;
+}
+
+.title-container-main {
+  padding: 10px;
+  background-color: white;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  color: white;
+}
+
+.title-card {
+  padding: 10px;
+}
+
+.favorite-card {
+  border: 3px solid aqua;
 }

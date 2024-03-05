@@ -2,8 +2,8 @@
 
 const inputSearch = document.querySelector('.js-input-search');
 const buttonSearch = document.querySelector('.js-button-search');
-const containerMain = document.querySelector('.js-container-main');
 const containerFavorite = document.querySelector('.js-container-favorite');
+const containerMain = document.querySelector('.js-container-main');
 let seriesList = [];
 let seriesFavoriteList = [];
 
@@ -13,7 +13,7 @@ function renderSerie(seriesArray) {
     // if (serie.image.jpg.image_url === 'null') {
     //   serie.image.jpg.image_url = 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
     // }
-    content += `<div class="card"><span class="title">${serie.title}</span><img class="img" src="${serie.images.jpg.image_url}" alt="" /></div>`;
+    content += `<div class="card"><span class="title-card">${serie.title}</span><img class="img" src="${serie.images.jpg.image_url}" alt="" /></div>`;
   }
   containerMain.innerHTML = content;
 }
