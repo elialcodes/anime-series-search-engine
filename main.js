@@ -125,8 +125,10 @@ buttonReset.addEventListener('click', handleReset);
 
 function handleRemoveAllFavorite() {
   containerFavorite.innerHTML = '';
+  favoriteList = [];
   localStorage.removeItem('favorite series');
   buttonResetAllFavorites.classList.add('hidden');
+  renderSerie(seriesList, containerMain);
 }
 
 buttonResetAllFavorites.addEventListener('click', handleRemoveAllFavorite);
