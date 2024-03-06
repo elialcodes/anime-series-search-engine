@@ -15,7 +15,8 @@ if (cardsSaved !== null) {
   favoriteList = cardsSaved;
   renderFavorite(favoriteList, containerFavorite);
   buttonResetAllFavorites.classList.remove('hidden');
-} else {
+}
+if (containerFavorite.innerHTML === '') {
   buttonResetAllFavorites.classList.add('hidden');
 }
 
@@ -32,19 +33,12 @@ function renderSerie(series, container) {
 
   const cards = document.querySelectorAll('.js-card');
   for (const card of cards) {
-    let cardId = card.mal_id;
-    console.log(cardId);
-    // console.log(cardIdFavorite);
-    // let cardIdFavorite = favoriteList.mal_id;
-    // if (cardId === cardIdFavorite) {
-    //   card.classList.add('favorite-card');
-    // }
-    // const areCardIncluded = favoriteList.indexOf(card);
-    // console.log(areCardIncluded);
-    // if (areCardIncluded === -1) {
-    //   card.classList.add('favorite-card');
-    // }
     card.addEventListener('click', handleAddFavorite);
+    if (favoriteList.some((item) => item.mal_id === parseInt(card.id))) {
+      card.classList.add('favorite-card');
+    } else {
+      card.classList.remove('favorite-card');
+    }
   }
 }
 
@@ -112,6 +106,9 @@ function handleRemoveFavorite(event) {
   localStorage.setItem('favorite series', JSON.stringify(cardsLocalStorage));
   renderFavorite(favoriteList, containerFavorite);
   renderSerie(seriesList, containerMain);
+  if (containerFavorite.innerHTML === '') {
+    buttonResetAllFavorites.classList.add('hidden');
+  }
 }
 
 function handleReset() {
