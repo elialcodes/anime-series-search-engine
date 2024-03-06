@@ -126,6 +126,15 @@ h2 {
   font-weight: 800;
 }
 
-.hidden-card {
+.hidden {
   display: none;
+}
+
+.button-reset-all-favorites {
+  padding: 7px;
+  background-color: lightpink;
+  color: black;
+  border: none;
+  border-radius: 2px;
+  margin-bottom: 10px;
 }

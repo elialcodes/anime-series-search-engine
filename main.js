@@ -6,6 +6,7 @@ const buttonReset = document.querySelector('.js-button-reset');
 const containerFavorite = document.querySelector('.js-container-favorite');
 const containerMain = document.querySelector('.js-container-main');
 const noResultParagraph = document.querySelector('.js-no-result');
+const buttonResetAllFavorites = document.querySelector('.js-button-reset-all-favorites');
 const cardsSaved = JSON.parse(localStorage.getItem('favorite series'));
 let seriesList = [];
 let favoriteList = [];
@@ -13,6 +14,9 @@ let favoriteList = [];
 if (cardsSaved !== null) {
   favoriteList = cardsSaved;
   renderFavorite(favoriteList, containerFavorite);
+  buttonResetAllFavorites.classList.remove('hidden');
+} else {
+  buttonResetAllFavorites.classList.add('hidden');
 }
 
 function renderSerie(series, container) {
@@ -28,6 +32,18 @@ function renderSerie(series, container) {
 
   const cards = document.querySelectorAll('.js-card');
   for (const card of cards) {
+    let cardId = card.mal_id;
+    console.log(cardId);
+    // console.log(cardIdFavorite);
+    // let cardIdFavorite = favoriteList.mal_id;
+    // if (cardId === cardIdFavorite) {
+    //   card.classList.add('favorite-card');
+    // }
+    // const areCardIncluded = favoriteList.indexOf(card);
+    // console.log(areCardIncluded);
+    // if (areCardIncluded === -1) {
+    //   card.classList.add('favorite-card');
+    // }
     card.addEventListener('click', handleAddFavorite);
   }
 }
@@ -66,6 +82,7 @@ function handleGetApi() {
 
       .catch((error) => {
         console.error('Error fetching data:', error);
+        noResultParagraph.innerHTML = '* Ha habido un problema, vuelve a intentarlo.';
       });
   }
 }
@@ -84,6 +101,7 @@ function handleAddFavorite(event) {
   event.currentTarget.classList.add('favorite-card');
   renderFavorite(favoriteList, containerFavorite);
   localStorage.setItem('favorite series', JSON.stringify(favoriteList));
+  buttonResetAllFavorites.classList.remove('hidden');
 }
 
 function handleRemoveFavorite(event) {
@@ -93,6 +111,7 @@ function handleRemoveFavorite(event) {
   cardsLocalStorage.splice(index, 1);
   localStorage.setItem('favorite series', JSON.stringify(cardsLocalStorage));
   renderFavorite(favoriteList, containerFavorite);
+  renderSerie(seriesList, containerMain);
 }
 
 function handleReset() {
@@ -102,6 +121,15 @@ function handleReset() {
   containerFavorite.innerHTML = '';
   containerMain.innerHTML = '';
   noResultParagraph.innerHTML = '';
+  buttonResetAllFavorites.classList.add('hidden');
 }
 
 buttonReset.addEventListener('click', handleReset);
+
+function handleRemoveAllFavorite() {
+  containerFavorite.innerHTML = '';
+  localStorage.removeItem('favorite series');
+  buttonResetAllFavorites.classList.add('hidden');
+}
+
+buttonResetAllFavorites.addEventListener('click', handleRemoveAllFavorite);
