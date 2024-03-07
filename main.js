@@ -95,11 +95,11 @@ function handleAddFavorite(event) {
   });
   if (indexFavoriteCards === -1) {
     favoriteList.push(selectedCard);
+    event.currentTarget.classList.add('favorite-card');
+    renderFavorite(favoriteList, containerFavorite);
+    localStorage.setItem('favorite series', JSON.stringify(favoriteList));
+    buttonResetAllFavorites.classList.remove('hidden');
   }
-  event.currentTarget.classList.add('favorite-card');
-  renderFavorite(favoriteList, containerFavorite);
-  localStorage.setItem('favorite series', JSON.stringify(favoriteList));
-  buttonResetAllFavorites.classList.remove('hidden');
 }
 
 function handleRemoveFavorite(event) {
