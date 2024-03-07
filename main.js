@@ -27,7 +27,11 @@ function renderSerie(series, container) {
     if (imageUrl === 'https://cdn.myanimelist.net/img/sp/icon/apple-touch-icon-256.png') {
       imageUrl = 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
     }
-    content += `<div id="${serie.mal_id}" class="card-container-main js-card"><span class="title-card">${serie.title}</span><img class="img-card" src="${imageUrl}" alt="anime serie" /></div>`;
+    let type = serie.type;
+    if (type === 'OVA' || type === 'Special') {
+      type = 'historia-especial';
+    }
+    content += `<div id="${serie.mal_id}" class="card-container-main js-card"><span class="title-card">${serie.title}</span><span class="type-card">${type}</span><img class="img-card" src="${imageUrl}" alt="anime serie" /></div>`;
   }
   container.innerHTML = content;
 

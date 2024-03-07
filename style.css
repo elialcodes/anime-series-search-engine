@@ -67,9 +67,11 @@ h2 {
   border: 2px solid lightpink;
   border-radius: 5px;
   text-align: center;
+}
+
+.container-favorite-cards {
   display: flex;
   flex-direction: column;
-  gap: 10px;
 }
 
 .container-main {
@@ -106,6 +108,11 @@ h2 {
 .title-card {
   font-size: 12px;
   padding: 10px;
+}
+
+.type-card {
+  font-size: 11px;
+  padding-bottom: 5px;
 }
 
 .card-container-favorite {
