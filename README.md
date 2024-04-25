@@ -2,6 +2,8 @@
 
 El ejercicio consiste en un buscador de series anime y las herramientas utilizadas han sido HTML, CSS y Javascript.
 
+url: https://elialcodes.github.io/anime-series-search-engine/
+
 HTML:
 Estructura básica con las siguientes características:
 - un input buscador de series/personajes
