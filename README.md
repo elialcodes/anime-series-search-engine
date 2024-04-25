@@ -1,7 +1,5 @@
 EJERCICIO CORRESPONDIENTE A LA EVALUACIÓN DEL MÓDULO 2 - JAVASCRIPT
 
-http://beta.adalab.es/modulo-2-evaluacion-final-elialcodes/
-
 El ejercicio consiste en un buscador de series anime y las herramientas utilizadas han sido HTML, CSS y Javascript.
 
 HTML:
