@@ -1,4 +1,4 @@
-EJERCICIO CORRESPONDIENTE A LA EVALUACIÓN DEL MÓDULO 2 - JAVASCRIPT
+# ANIME SERIES SEARCH
 
 El ejercicio consiste en un buscador de series anime y las herramientas utilizadas han sido HTML, CSS y Javascript.
 
