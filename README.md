@@ -1,28 +1,31 @@
-# ANIME SERIES SEARCH
+# Anime Series Search 📺 :dart: :fire: :kr:
 
-El ejercicio consiste en un buscador de series anime y las herramientas utilizadas han sido HTML, CSS y Javascript.
+The web aplication consists of a search engine for anime series like Naruto, One Piece, Dragon Ball... all your favorite series!
+The web has a basic structure with a search input for series/characters, a search button, a reset button, a favorite series container and a main series container for user search results. The design is responsive according to a "mobile first" approach and from there we took care with other devices.
 
-url: https://elialcodes.github.io/anime-series-search-engine/
 
-HTML:
-Estructura básica con las siguientes características:
-- un input buscador de series/personajes
-- un botón de "Buscar" y otro de "Reset"
-- un contenedor de series favoritas
-- un contendedor de series principal para los resultados de la búsqueda
+## Features ⭐
 
-CSS:
-- estilado sencillo, no era el objetivo del ejercicio
-- se ha partido de un enfoque "mobile first" y a partir de ahí se ha cuidado el diseño responsive con medias queries.
+- search for series from a value entered in the input
+- data request to the server with fetch through API (asynchrony)
+- render the information obtained in cards in the "main" container
+- select the cards and add them to the "favorites" container
+- add the cards with their information in localStorage, so when reloading the page they are displayed by default
 
-JAVASCRIPT:
-Funcionalidades requeridas:
-- búsqueda de series a partir de un valor introducido en el input
-- petición de datos al servidor con fetch a través de API (asincronía)
-- renderizar la información obtenida en forma de "cards" en el contenedor "principal"
-- seleccionar las cards y añadirlas al contenedor de "favoritos"
-- añadir una clase para resaltar, en el contenedor principal, que la card está en el contenedor de favoritos
-- añadir las cards con su información en localStorage, de tal forma que al recargar la página se muestren por defecto
-- eliminar las cards del contenedor de favoritos con un botón individual para cada card o con un botón que las elimina
-  de una vez, ambos hacen que las series también desaparezcan del localStorage
-- un botón de "Reset" que restaura el estado inicial de la página: sin lista de favoritos y sin lista de resultados de búsqueda.
+
+## Extras :1st_place_medal:
+
+- add a class to highlight that the card is in the favorites container
+- remove the cards from the favorites container with an individual button for each card or with a global button that removes them all
+- both delete buttons make the series also disappear from the localStorage
+- a reset button that restores the initial state of the page: no list of favorites and no list of search results.
+
+
+## Tech Stack 💻 📚
+
+HTML, CSS and JavaScript
+
+
+## 🔗 Links
+
+https://elialcodes.github.io/anime-series-search-engine/
