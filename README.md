@@ -26,6 +26,14 @@ The web has a basic structure with a search input for series/characters, a searc
 HTML, CSS and JavaScript
 
 
+## API Reference
+
+#### Get all items
+
+```http
+  https://api.jikan.moe/v4/anime
+```
+
 ## 🔗 Links
 
 https://elialcodes.github.io/anime-series-search-engine/
